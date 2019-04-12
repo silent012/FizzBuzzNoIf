@@ -26,12 +26,12 @@ for (let i = num_min; i <= num_max; i++) {
   o = []; //declare "o" array
 
   for (const key in replace_array) {
-    o.push(String(' '+i%replace_array[key][0]+' ')); // create array of modulo result
+    o.push(String(i%replace_array[key][0])); // create array of modulo result
   }
 
   for (const key in o) {
-    o[key] = o[key].replace(' 0 ', replace_array[key][1]); // replace 0 to fizz or buzz
-      o[key] = o[key].replace(/[0-9]/g, ""); //remove not needed numbers
+    o[key] = o[key].replace(/^[0]$/, replace_array[key][1]); // replace 0 to fizz or buzz
+    o[key] = o[key].replace(/[0-9]/g, ""); //remove not needed numbers
   }
   
 
