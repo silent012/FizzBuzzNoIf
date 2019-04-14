@@ -6,7 +6,7 @@ const replace_array = [
 ];
 
 // range numbers
-const num_min = 1;
+const num_min = 0;
 const num_max = 100;
 
 // printout replacement patterns, just for test
@@ -24,9 +24,11 @@ console.log("=========");
 //body of while
 for (let i = num_min; i <= num_max; i++) {
   o = []; //declare "o" array
+  x=(i/i)*i //0 fix
 
   for (const key in replace_array) {
-    o.push(String(i%replace_array[key][0])); // create array of modulo result
+
+    o.push(String(x%replace_array[key][0])); // create array of modulo result
   }
 
   for (const key in o) {
@@ -37,8 +39,8 @@ for (let i = num_min; i <= num_max; i++) {
 
   o = o.join(''); // join 2 array and convert to string
   o = o.trim(); //trim bad looks spaces  
-  o = o.replace(/^(?![\s\S])/, i); // replace empty to numbers
-
+  o = o.replace(/^(?![\s\S])/, x); // replace empty to numbers
+  o = o.replace('NaNNaN', 0); // 0fix
   
   //print result
   console.log(i+':'+o);
